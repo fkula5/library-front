@@ -9,6 +9,7 @@ import Authors from "./pages/Authors";
 import Book from "./pages/Book";
 import BookForm from "./pages/BookForm";
 import AuthorForm from "./pages/AuthorForm";
+import RentForm from "./pages/RentForm";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
     {
         path: "/authorForm",
         element: <AuthorForm />,
+    },
+    {
+        path: "/rentForm",
+        element: <RentForm />,
     },
 ]);
 

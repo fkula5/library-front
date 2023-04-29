@@ -2,6 +2,7 @@ import { Button, Container } from "react-bootstrap";
 import DynamicTable from "../components/dynamicTable/DynamicTable";
 import Footer from "../components/footer/Footer";
 import Navigation from "../components/nav/Navigation";
+import { LinkContainer } from "react-router-bootstrap";
 
 export default function Root() {
     const data = [
@@ -21,7 +22,9 @@ export default function Root() {
             <Navigation />
             <Container className="d-flex justify-content-between align-items-center">
                 <h2 className="my-4">Available books</h2>
-                <Button>Rent a book</Button>
+                <LinkContainer to="/rentForm">
+                    <Button>Rent a book</Button>
+                </LinkContainer>
             </Container>
             <DynamicTable data={data} />
             <Footer />
