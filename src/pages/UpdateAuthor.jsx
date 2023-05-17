@@ -1,9 +1,9 @@
 import { Container } from "react-bootstrap";
 import Footer from "../components/footer/Footer";
-import FormRent from "../components/form/FormRent";
 import Navigation from "../components/nav/Navigation";
+import UpdateAuthorForm from "../components/form/update/UpdateAuthorForm";
 
-export default function BookForm() {
+export default function UpdateAuthor() {
     return (
         <div
             style={{
@@ -14,7 +14,7 @@ export default function BookForm() {
         >
             <Navigation />
             <Container style={{ flex: 1 }} className="my-4">
-                <FormRent />
+                <UpdateAuthorForm />
             </Container>
             <Footer />
         </div>

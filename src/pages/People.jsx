@@ -4,15 +4,16 @@ import Navigation from "../components/nav/Navigation";
 import { LinkContainer } from "react-router-bootstrap";
 import { useEffect, useState } from "react";
 import AuthorTable from "../components/table/AuthorsTable";
+import PeopleTable from "../components/table/PeopleTable";
 
-export default function Authors() {
-    const [authors, setAuthors] = useState([]);
+export default function People() {
+    const [people, setPeople] = useState([]);
 
     async function fetchData() {
         try {
-            const response = await fetch("http://127.0.0.1:8080/api/authors");
+            const response = await fetch("http://127.0.0.1:8080/api/people");
 
-            setAuthors(await response.json());
+            setPeople(await response.json());
         } catch (error) {
             console.error(error);
         }
@@ -32,13 +33,13 @@ export default function Authors() {
         >
             <Navigation />
             <Container className="d-flex justify-content-between align-items-center">
-                <h2 className="my-4">All authors</h2>
-                <LinkContainer to="/addAuthor">
-                    <Button>Add new author</Button>
+                <h2 className="my-4">All people</h2>
+                <LinkContainer to="/addPerson">
+                    <Button>Add new person</Button>
                 </LinkContainer>
             </Container>
             <Container style={{ flex: 1 }} className="my-4">
-                <AuthorTable authors={authors} />
+                <PeopleTable people={people} />
             </Container>
             <Footer />
         </div>

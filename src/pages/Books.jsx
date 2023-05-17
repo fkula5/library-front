@@ -1,15 +1,26 @@
 import { Button, Container } from "react-bootstrap";
-import DynamicTable from "../components/dynamicTable/DynamicTable";
 import Footer from "../components/footer/Footer";
 import Navigation from "../components/nav/Navigation";
 import { LinkContainer } from "react-router-bootstrap";
+import { useEffect, useState } from "react";
+import BookTable from "../components/table/BooksTable";
 
 export default function Books() {
-    const data = [
-        { id: 1, title: "Książka 1", author: "Autor 1" },
-        { id: 2, title: "Książka 2", author: "Autor 2" },
-        { id: 3, title: "Książka 3", author: "Autor 3" },
-    ];
+    const [books, setBooks] = useState([]);
+
+    async function fetchData() {
+        try {
+            const response = await fetch("http://127.0.0.1:8080/api/books");
+
+            setBooks(await response.json());
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <div
@@ -22,11 +33,13 @@ export default function Books() {
             <Navigation />
             <Container className="d-flex justify-content-between align-items-center">
                 <h2 className="my-4">All books</h2>
-                <LinkContainer to="/bookForm">
+                <LinkContainer to="/addBook">
                     <Button>Add new book</Button>
                 </LinkContainer>
             </Container>
-            <DynamicTable data={data} />
+            <Container style={{ flex: 1 }} className="my-4">
+                <BookTable books={books} />
+            </Container>
             <Footer />
         </div>
     );

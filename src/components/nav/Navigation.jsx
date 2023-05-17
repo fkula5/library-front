@@ -19,6 +19,12 @@ function Navigation() {
                     <LinkContainer to={"/authors"}>
                         <Nav.Link>Authors</Nav.Link>
                     </LinkContainer>
+                    <LinkContainer to={"/people"}>
+                        <Nav.Link>People</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to={"/transactions"}>
+                        <Nav.Link>Transactions</Nav.Link>
+                    </LinkContainer>
                 </Nav>
             </Container>
         </Navbar>
