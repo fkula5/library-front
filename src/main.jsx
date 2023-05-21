@@ -16,6 +16,10 @@ import UpdatePerson from "./pages/UpdatePerson";
 import UpdateBook from "./pages/UpdateBook";
 import People from "./pages/People";
 import Person from "./pages/Person";
+import Transactions from "./pages/Transactions";
+import Transaction from "./pages/Transaction";
+import AddTransaction from "./pages/AddTransaction";
+import UpdateTransaction from "./pages/UpdateTransaction";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
@@ -26,14 +30,22 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 <Route exact path="/books/:id" element={<Book />} />
                 <Route exact path="/addBook" element={<AddBook />} />
                 <Route exact path="/updateBook/:id" element={<UpdateBook />} />
-                {/* <Route exact path="/people" component={People} /> */}
-                {/* <Route exact path="/people/:id" component={PersonDetails} /> */}
-                {/* <Route exact path="/transactions" component={Transactions} /> */}
-                {/* <Route
+                <Route exact path="/transactions" element={<Transactions />} />
+                <Route
                     exact
                     path="/transactions/:id"
-                    component={TransactionDetails}
-                /> */}
+                    element={<Transaction />}
+                />
+                <Route
+                    exact
+                    path="/addTransaction"
+                    element={<AddTransaction />}
+                />
+                <Route
+                    exact
+                    path="/updateTransaction/:id"
+                    element={<UpdateTransaction />}
+                />
                 <Route exact path="/people" element={<People />} />
                 <Route exact path="/people/:id" element={<Person />} />
                 <Route exact path="/addPerson" element={<AddPerson />} />

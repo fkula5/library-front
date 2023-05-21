@@ -19,7 +19,7 @@ const AddPersonForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch("http://127.0.0.1:8080/api/people", {
+        fetch("http://localhost:8080/api/people", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

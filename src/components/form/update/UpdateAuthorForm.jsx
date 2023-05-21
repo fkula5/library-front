@@ -12,7 +12,7 @@ const UpdateAuthorForm = () => {
     });
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8080/api/authors/${id}`)
+        fetch(`http://localhost:8080/api/authors/${id}`)
             .then((response) => response.json())
             .then((data) => {
                 setAuthorData(data);
@@ -33,7 +33,7 @@ const UpdateAuthorForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`http://127.0.0.1:8080/api/authors/${id}`, {
+        fetch(`http://localhost:8080/api/authors/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

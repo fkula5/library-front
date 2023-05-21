@@ -12,7 +12,7 @@ const UpdatePersonForm = () => {
     });
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8080/api/people/${id}`)
+        fetch(`http://localhost:8080/api/people/${id}`)
             .then((response) => response.json())
             .then((data) => {
                 setPersonData(data);
@@ -33,7 +33,7 @@ const UpdatePersonForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`http://127.0.0.1:8080/api/people/${id}`, {
+        fetch(`http://localhost:8080/api/people/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

@@ -13,7 +13,7 @@ const Book = () => {
     async function fetchData() {
         try {
             const response = await fetch(
-                `http://127.0.0.1:8080/api/books/${id}`
+                `http://localhost:8080/api/books/${id}`
             );
 
             setBooks(await response.json());
@@ -23,7 +23,7 @@ const Book = () => {
     }
 
     const deleteBook = (bookId) => {
-        fetch(`http://127.0.0.1:8080/api/books/${bookId}`, {
+        fetch(`http://localhost:8080/api/books/${bookId}`, {
             method: "DELETE",
         })
             .then((response) => {

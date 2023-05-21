@@ -9,13 +9,20 @@ const UpdateBookForm = () => {
     const [bookData, setBookData] = useState({
         title: "",
         isbn: "",
+        authors: [],
+        publishedDate: "",
+        available: true,
+    });
+    const [formData, setFormData] = useState({
+        title: "",
+        isbn: "",
         authorsId: [],
         publishedDate: "",
         available: true,
     });
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8080/api/authors")
+        fetch("http://localhost:8080/api/authors")
             .then((response) => response.json())
             .then((data) => {
                 setAuthors(data);
@@ -26,7 +33,7 @@ const UpdateBookForm = () => {
     }, []);
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8080/api/books/${id}`)
+        fetch(`http://localhost:8080/api/books/${id}`)
             .then((response) => response.json())
             .then((data) => {
                 setBookData(data);
@@ -58,8 +65,8 @@ const UpdateBookForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        fetch(`http://127.0.0.1:8080/api/books/${id}`, {
+        console.log(bookData);
+        fetch(`http://localhost:8080/api/books/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

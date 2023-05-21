@@ -20,9 +20,7 @@ const AddAuthorForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // Send POST request
-        fetch("http://127.0.0.1:8080/api/authors", {
+        fetch("http://localhost:8080/api/authors", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

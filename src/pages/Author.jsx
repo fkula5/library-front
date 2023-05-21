@@ -13,7 +13,7 @@ const Author = () => {
     async function fetchData() {
         try {
             const response = await fetch(
-                `http://127.0.0.1:8080/api/authors/${id}`
+                `http://localhost:8080/api/authors/${id}`
             );
 
             setAuthor(await response.json());
@@ -23,7 +23,7 @@ const Author = () => {
     }
 
     const deleteAuthor = (authorId) => {
-        fetch(`http://127.0.0.1:8080/api/authors/${authorId}`, {
+        fetch(`http://localhost:8080/api/authors/${authorId}`, {
             method: "DELETE",
         })
             .then((response) => {

@@ -5,15 +5,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 
-const Author = () => {
-    const [person, setPerson] = useState({});
+const Person = () => {
+    const [person, setPerson] = useState(null);
     const { id } = useParams();
     const navigate = useNavigate();
 
     async function fetchData() {
         try {
             const response = await fetch(
-                `http://127.0.0.1:8080/api/people/${id}`
+                `http://localhost:8080/api/people/${id}`
             );
 
             setPerson(await response.json());
@@ -23,7 +23,7 @@ const Author = () => {
     }
 
     const deletePerson = (personId) => {
-        fetch(`http://127.0.0.1:8080/api/people/${personId}`, {
+        fetch(`http://localhost:8080/api/people/${personId}`, {
             method: "DELETE",
         })
             .then((response) => {
@@ -43,6 +43,9 @@ const Author = () => {
         fetchData();
     }, []);
 
+    if (!person) {
+        return <div>Loading...</div>;
+    }
     return (
         <div
             style={{
@@ -73,4 +76,4 @@ const Author = () => {
     );
 };
 
-export default Author;
+export default Person;

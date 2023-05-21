@@ -10,7 +10,7 @@ export default function Books() {
 
     async function fetchData() {
         try {
-            const response = await fetch("http://127.0.0.1:8080/api/books");
+            const response = await fetch("http://localhost:8080/api/books");
 
             setBooks(await response.json());
         } catch (error) {

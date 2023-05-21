@@ -14,7 +14,7 @@ const AddBookForm = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8080/api/authors")
+        fetch("http://localhost:8080/api/authors")
             .then((response) => response.json())
             .then((data) => {
                 setAuthors(data);
@@ -46,8 +46,7 @@ const AddBookForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission (e.g., send data to server)
-        fetch("http://127.0.0.1:8080/api/books", {
+        fetch("http://localhost:8080/api/books", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
