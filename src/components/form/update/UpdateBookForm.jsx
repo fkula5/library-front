@@ -13,13 +13,6 @@ const UpdateBookForm = () => {
         publishedDate: "",
         available: true,
     });
-    const [formData, setFormData] = useState({
-        title: "",
-        isbn: "",
-        authorsId: [],
-        publishedDate: "",
-        available: true,
-    });
 
     useEffect(() => {
         fetch("http://localhost:8080/api/authors")
@@ -151,7 +144,7 @@ const UpdateBookForm = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit" className="my-4">
-                Update Author
+                Update Book
             </Button>
         </Form>
     );

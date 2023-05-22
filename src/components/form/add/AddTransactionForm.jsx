@@ -15,7 +15,7 @@ const AddTransactionForm = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/books")
+        fetch("http://localhost:8080/api/books/available")
             .then((response) => response.json())
             .then((data) => setBooks(data))
             .catch((error) => {

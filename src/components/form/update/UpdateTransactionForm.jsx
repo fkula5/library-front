@@ -6,13 +6,6 @@ const UpdateTransactionForm = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [transactionData, setTransactionData] = useState({});
-    // const [formData, setFormData] = useState({
-    //     bookId: "",
-    //     personId: "",
-    //     checkoutDate: "",
-    //     dueDate: "",
-    //     returnDate: "",
-    // });
     const [books, setBooks] = useState([]);
     const [people, setPeople] = useState([]);
 
@@ -21,6 +14,11 @@ const UpdateTransactionForm = () => {
             .then((response) => response.json())
             .then((data) => {
                 setTransactionData(data);
+                setTransactionData((prevTransactionData) => ({
+                    ...prevTransactionData,
+                    personId: prevTransactionData.person.id,
+                    bookId: prevTransactionData.book.id,
+                }));
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -28,7 +26,7 @@ const UpdateTransactionForm = () => {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/books")
+        fetch("http://localhost:8080/api/books/available")
             .then((response) => response.json())
             .then((data) => setBooks(data))
             .catch((error) => {
@@ -74,7 +72,6 @@ const UpdateTransactionForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(transactionData);
         fetch(`http://localhost:8080/api/transactions/${id}`, {
             method: "PUT",
             headers: {
@@ -85,7 +82,7 @@ const UpdateTransactionForm = () => {
             .then((response) => {
                 if (response.ok) {
                     console.log("Transaction updated successfully");
-                    navigate("/books");
+                    navigate("/transactions");
                 } else {
                     console.error("Error updating Transaction");
                 }
@@ -152,6 +149,7 @@ const UpdateTransactionForm = () => {
                 <Form.Control
                     type="date"
                     value={transactionData.returnDate}
+                    name="returnDate"
                     onChange={handleInputChange}
                 />
             </Form.Group>
